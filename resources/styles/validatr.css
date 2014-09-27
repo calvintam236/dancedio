@@ -1,0 +1,10 @@
+.validatr-message {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 15px!important;
+	text-align: center;
+	max-width: 460px;
+	min-width: 260px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}

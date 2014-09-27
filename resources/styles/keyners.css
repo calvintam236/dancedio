@@ -1,0 +1,881 @@
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+	display: block
+}
+
+body {
+	line-height: 1
+}
+
+img {
+	max-width: 100%
+}
+
+ol,ul {
+	list-style: none
+}
+
+blockquote,q {
+	quotes: none
+}
+
+blockquote::before,blockquote::after,q::before,q::after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+	Variable Grid System.
+	Learn more ~ http://www.spry-soft.com/grids/
+	Based on 960 Grid System - http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+
+body {
+	min-width: 1600px
+}
+
+/* Containers
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 {
+	width: 92%;
+	margin-left: 4%;
+	margin-right: 4%;
+}
+
+/* Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12,.grid_13,.grid_14,.grid_15,.grid_16 {
+	display: inline;
+	float: left;
+	position: relative;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+/* Grid >> Children (Alpha ~ First,Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+	margin-left: 0
+}
+
+.omega {
+	margin-right: 0
+}
+
+/* Grid >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .grid_1 {
+	width: 4.25%
+}
+
+.container_16 .grid_2 {
+	width: 10.5%
+}
+
+.container_16 .grid_3 {
+	width: 16.75%
+}
+
+.container_16 .grid_4 {
+	width: 23.0%
+}
+
+.container_16 .grid_5 {
+	width: 29.25%
+}
+
+.container_16 .grid_6 {
+	width: 35.5%
+}
+
+.container_16 .grid_7 {
+	width: 41.75%
+}
+
+.container_16 .grid_8 {
+	width: 48.0%
+}
+
+.container_16 .grid_9 {
+	width: 54.25%
+}
+
+.container_16 .grid_10 {
+	width: 60.5%
+}
+
+.container_16 .grid_11 {
+	width: 66.75%
+}
+
+.container_16 .grid_12 {
+	width: 73.0%
+}
+
+.container_16 .grid_13 {
+	width: 79.25%
+}
+
+.container_16 .grid_14 {
+	width: 85.5%
+}
+
+.container_16 .grid_15 {
+	width: 91.75%
+}
+
+.container_16 .grid_16 {
+	width: 98.0%
+}
+
+/* Prefix Extra Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .prefix_1 {
+	padding-left: 6.25%
+}
+
+.container_16 .prefix_2 {
+	padding-left: 12.5%
+}
+
+.container_16 .prefix_3 {
+	padding-left: 18.75%
+}
+
+.container_16 .prefix_4 {
+	padding-left: 25.0%
+}
+
+.container_16 .prefix_5 {
+	padding-left: 31.25%
+}
+
+.container_16 .prefix_6 {
+	padding-left: 37.5%
+}
+
+.container_16 .prefix_7 {
+	padding-left: 43.75%
+}
+
+.container_16 .prefix_8 {
+	padding-left: 50.0%
+}
+
+.container_16 .prefix_9 {
+	padding-left: 56.25%
+}
+
+.container_16 .prefix_10 {
+	padding-left: 62.5%
+}
+
+.container_16 .prefix_11 {
+	padding-left: 68.75%
+}
+
+.container_16 .prefix_12 {
+	padding-left: 75.0%
+}
+
+.container_16 .prefix_13 {
+	padding-left: 81.25%
+}
+
+.container_16 .prefix_14 {
+	padding-left: 87.5%
+}
+
+.container_16 .prefix_15 {
+	padding-left: 93.75%
+}
+
+/* Suffix Extra Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .suffix_1 {
+	padding-right: 6.25%
+}
+
+.container_16 .suffix_2 {
+	padding-right: 12.5%
+}
+
+.container_16 .suffix_3 {
+	padding-right: 18.75%
+}
+
+.container_16 .suffix_4 {
+	padding-right: 25.0%
+}
+
+.container_16 .suffix_5 {
+	padding-right: 31.25%
+}
+
+.container_16 .suffix_6 {
+	padding-right: 37.5%
+}
+
+.container_16 .suffix_7 {
+	padding-right: 43.75%
+}
+
+.container_16 .suffix_8 {
+	padding-right: 50.0%
+}
+
+.container_16 .suffix_9 {
+	padding-right: 56.25%
+}
+
+.container_16 .suffix_10 {
+	padding-right: 62.5%
+}
+
+.container_16 .suffix_11 {
+	padding-right: 68.75%
+}
+
+.container_16 .suffix_12 {
+	padding-right: 75.0%
+}
+
+.container_16 .suffix_13 {
+	padding-right: 81.25%
+}
+
+.container_16 .suffix_14 {
+	padding-right: 87.5%
+}
+
+.container_16 .suffix_15 {
+	padding-right: 93.75%
+}
+
+/* Push Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .push_1 {
+	left: 6.25%
+}
+
+.container_16 .push_2 {
+	left: 12.5%
+}
+
+.container_16 .push_3 {
+	left: 18.75%
+}
+
+.container_16 .push_4 {
+	left: 25.0%
+}
+
+.container_16 .push_5 {
+	left: 31.25%
+}
+
+.container_16 .push_6 {
+	left: 37.5%
+}
+
+.container_16 .push_7 {
+	left: 43.75%
+}
+
+.container_16 .push_8 {
+	left: 50.0%
+}
+
+.container_16 .push_9 {
+	left: 56.25%
+}
+
+.container_16 .push_10 {
+	left: 62.5%
+}
+
+.container_16 .push_11 {
+	left: 68.75%
+}
+
+.container_16 .push_12 {
+	left: 75.0%
+}
+
+.container_16 .push_13 {
+	left: 81.25%
+}
+
+.container_16 .push_14 {
+	left: 87.5%
+}
+
+.container_16 .push_15 {
+	left: 93.75%
+}
+
+/* Pull Space >> 16 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_16 .pull_1 {
+	left: -6.25%
+}
+
+.container_16 .pull_2 {
+	left: -12.5%
+}
+
+.container_16 .pull_3 {
+	left: -18.75%
+}
+
+.container_16 .pull_4 {
+	left: -25.0%
+}
+
+.container_16 .pull_5 {
+	left: -31.25%
+}
+
+.container_16 .pull_6 {
+	left: -37.5%
+}
+
+.container_16 .pull_7 {
+	left: -43.75%
+}
+
+.container_16 .pull_8 {
+	left: -50.0%
+}
+
+.container_16 .pull_9 {
+	left: -56.25%
+}
+
+.container_16 .pull_10 {
+	left: -62.5%
+}
+
+.container_16 .pull_11 {
+	left: -68.75%
+}
+
+.container_16 .pull_12 {
+	left: -75.0%
+}
+
+.container_16 .pull_13 {
+	left: -81.25%
+}
+
+.container_16 .pull_14 {
+	left: -87.5%
+}
+
+.container_16 .pull_15 {
+	left: -93.75%
+}
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+
+.clearfix::after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block
+}
+
+* html .clearfix {
+	height: 1%
+}
+
+.clearfix {
+	display: block
+}
+
+* {
+	max-height: 100000px
+}
+
+html {
+	width: 100%;
+	font-family: 'Lato';
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	color: #585858;
+}
+
+/*
+* Paragraf
+*/
+
+p {
+	font-size: 17px;
+	font-weight: 300;
+	color: #333;
+	line-height: 21px;
+}
+
+/*
+* Link
+*/
+
+a,a:visited {
+	text-decoration: none;
+	color: #585858;
+}
+
+/*
+* Headings
+*/
+
+h1 {
+	font-size: 29px
+}
+
+h2 {
+	font-size: 22px
+}
+
+h3 {
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 36px;
+}
+
+h4 {
+	font-size: 18px
+}
+
+h5 {
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+h6 {
+	font-size: 14px;
+	padding-bottom: 10px;
+	font-weight: 700;
+}
+
+/*
+* Lista NIE uporzadkowana UL
+*/
+
+ul {
+	font-size: 14px;
+	margin: 7px 0;
+	padding-left: 10px;
+}
+
+ul li {
+	margin-bottom: 5px
+}
+
+/*
+* divs random
+*/
+
+.container_16 .clear,body .clear {
+	width: 100%;
+	float: left;
+	clear: both;
+	margin: 15px 0 20px;
+}
+
+.grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12,.grid_13,.grid_14,.grid_15,.grid_16 {
+	font-size: 0
+}
+
+.mainMenu ul li a,input,select,textarea,button {
+	-webkit-transition: color .12s ease-in-out;
+	transition: color .12s ease-in-out;
+}
+
+header h1,header h4,.orange,.orange p,.gray,table,form,.form input,.form select,.form textarea,.form button,footer {
+	width: 100%
+}
+
+header p,header h1,header h4,.orange,.orange p,input[type=submit]:hover,button:hover {
+	color: #fff
+}
+
+.orange,.orange h2,.orange p,.gray div:first-of-type:not(:last-of-type),.table h3,.form h3,.table p,.form p,th,td,input,select,textarea,button {
+	text-align: center
+}
+
+/*
+* Header 
+*/
+
+header {
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,.3)
+}
+
+header nav {
+	padding: 20px 0;
+	background: #fff;
+	border-top: 2px solid #FF6A00;
+}
+
+header h1,header h4 {
+	float: left;
+	clear: both;
+	text-shadow: 0 1px 1px rgba(0,0,0,.2);
+	font-weight: 600;
+}
+
+header h1 {
+	display: none
+}
+
+header h4 {
+	font-weight: 400;
+	margin-bottom: 10px;
+}
+
+/*
+* Logo
+*/
+
+.logo {
+	font-size: 0
+}
+
+.logo img {
+	width: 100px
+}
+
+/*
+* Menu
+*/
+
+.mainMenu ul {
+	margin: 0;
+	padding: 0;
+	float: right;
+	line-height: 100px;
+}
+
+.mainMenu ul li {
+	display: inline;
+	float: left;
+	margin: 0 10px;
+}
+
+.mainMenu ul li:first-of-type {
+	margin-left: 0
+}
+
+.mainMenu ul li:last-of-type {
+	margin-right: 0
+}
+
+.mainMenu ul li a {
+	font-size: 18px;
+	color: #444;
+	text-decoration: none;
+	letter-spacing: -1px;
+}
+
+.mainMenu ul li a:hover {
+	color: #FF6A00
+}
+
+#error:hover,#done:hover {
+	cursor: pointer
+}
+
+/*
+* Orange
+*/
+
+.orange {
+	float: left;
+	clear: both;
+	background: #ff6a00;
+	padding: 20px 0;
+	position: relative;
+	z-index: 1;
+}
+
+.orange h2 {
+	margin: 20px 0 50px;
+	text-shadow: none;
+}
+
+.orange p {
+	width: 600px;
+	margin: 0 auto 30px;
+}
+
+/*
+* Gray
+*/
+
+.gray {
+	float: left;
+	clear: both;
+	background: #f6f6f6;
+	padding: 25px 0;
+	position: relative;
+	z-index: 1;
+}
+
+.gray img {
+	width: 100px;
+	border-radius: 50%;
+}
+
+.table h3,.form h3 {
+	margin-bottom: 20px
+}
+
+/*
+* Table
+*/
+
+table {
+	table-layout: fixed
+}
+
+th,td {
+	border: 1px solid #ddd;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 34px;
+}
+
+/*
+* Form,input,label,textarea,button
+*/
+
+input,select,textarea,button {
+	font-family: Lato;
+	width: 50%;
+	max-width: 100%;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	display: block;
+}
+
+.form input,.form select,.form textarea,.form button {
+	margin: 0 auto
+}
+
+input {
+	padding: 7px 10px
+}
+
+input,select:not([multiple]) {
+	height: 62px
+}
+
+input,select,textarea,button {
+	border: 1px solid #ddd;
+	outline: none;
+	font-size: 30px;
+}
+
+input[type=checkbox] {
+	height: 35px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: #eee;
+	border: none;
+	margin: 0;
+}
+
+input[type=checkbox]:hover,input[type=checkbox]:checked {
+	background: #1EBA6B
+}
+
+input[type=checkbox]:checked {
+	opacity: 0.6
+}
+
+input:focus,textarea:focus {
+	border-color: #b6b6b6
+}
+
+textarea {
+	padding: 7px 10px;
+	resize: vertical;
+	display: block;
+}
+
+input.error,textarea.error {
+	border-color: #cc4847
+}
+
+input[type=submit],button {
+	padding: 12px 0;
+	font-size: 24px;
+	border: none;
+	background: #eee;
+	color: #aaa;
+	cursor: pointer;
+}
+
+input[type=submit]:hover,button:hover {
+	background: #1EBA6B
+}
+
+/*
+* Footer
+*/
+
+footer {
+	float: left;
+	padding: 25px 0;
+	background: #333;
+}
+
+footer h5 {
+	color: #ccc
+}
+
+footer p {
+	color: #aaa;
+	line-height: 23px;
+	font-size: 12px;
+}
+
+footer a {
+	color: #ddd
+}
+
+footer a:hover {
+	color: #ff6a00
+}
+
+/* -------------------
+*  RESPOSIVE ELEMENTS
+*  ------------------- */
+
+@media only screen and (min-width:1300px) and (max-width:1620px) { 
+	body {
+		min-width: 1280px
+	}
+}
+
+@media only screen and (max-width:1299px) { 
+	.grid_1,.grid_2,.grid_3,.grid_4,.grid_5,.grid_6,.grid_7,.grid_8,.grid_9,.grid_10,.grid_11,.grid_12,.grid_13,.grid_14,.grid_15,.grid_16 {
+		width: 100%!important;
+		margin-bottom: 35px;
+	}
+
+	body {
+		min-width: 360px
+	}
+
+	.logo,.orange div:last-of-type,.gray div:last-of-type,.table div:nth-of-type(3n),.table div:nth-of-type(4n),.table div:last-of-type {
+		margin-bottom: 0
+	}
+
+	.logo,.gray div:not(:first-of-type),.mainMenu ul li {
+		text-align: center
+	}
+
+	.mainMenu {
+		margin-bottom: 0;
+		display: none;
+	}
+
+	.mainMenu ul {
+		margin-top: 20px;
+		padding-top: 20px;
+		line-height: normal;
+		border-top: 1px solid #ddd;
+		float: none;
+	}
+
+	.mainMenu ul li,img,input,select,textarea,button {
+		width: 100%
+	}
+
+	.mainMenu ul li {
+		display: block;
+		margin: 10px 0;
+	}
+
+	.orange p {
+		width: 200px
+	}
+
+	.gray img {
+		width: 200px
+	}
+}
+
+@media only print { 
+	body {
+		min-width: 1120px
+	}
+
+	header,.orange,footer {
+		display: none
+	}
+}
