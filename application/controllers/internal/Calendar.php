@@ -490,7 +490,7 @@ class Calendar extends CI_Controller
 									switch ($this->input->post('action'))
 									{
 										case 'add/remove':
-											if ( ! empty($this->input->post('pid')))
+											if ( ! is_null($this->input->post('pid')) && count($this->input->post('pid')) > 0)
 											{
 												foreach ($this->input->post('pid') as $object)
 												{
@@ -538,7 +538,7 @@ class Calendar extends CI_Controller
 									switch ($this->input->post('action'))
 									{
 										case 'add/remove':
-											if ( ! empty($this->input->post('gid')))
+											if ( ! is_null($this->input->post('gid')) && count($this->input->post('gid')) > 0)
 											{
 												foreach ($this->input->post('gid') as $object)
 												{
@@ -590,7 +590,7 @@ class Calendar extends CI_Controller
 									switch ($this->input->post('action'))
 									{
 										case 'edit/cancel':
-											if ( ! empty($this->input->post('did')))
+											if ( ! is_null($this->input->post('did')) && count($this->input->post('did')) > 0)
 											{
 												foreach ($this->input->post('did') as $object)
 												{
@@ -683,7 +683,7 @@ class Calendar extends CI_Controller
 						}
 					}
 				}
-				elseif ( ! empty($this->input->post()))
+				elseif (count($this->input->post()) > 0)
 				{
 					$data['error'] = 'No data received as expected.';
 				}

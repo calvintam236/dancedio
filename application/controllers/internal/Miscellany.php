@@ -196,7 +196,7 @@ class Miscellany extends CI_Controller
 							switch ($this->input->post('action'))
 							{
 								case 'edit/remove':
-									if ( ! empty($this->input->post('gid')))
+									if ( ! is_null($this->input->post('gid')) && count($this->input->post('gid')) > 0)
 									{
 										foreach ($this->input->post('gid') as $object)
 										{

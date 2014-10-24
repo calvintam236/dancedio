@@ -92,15 +92,111 @@ class Integrations extends CI_Controller
 													}
 												}
 												break;
+											case 'M/NEW':
+												$memberships = $this->Memberships->filter();
+												if ( ! is_null($memberships))
+												{
+													foreach ($memberships as $object)
+													{
+														if ( ! isset($data['persons'][$object->pid]))
+														{
+															$persons = $this->Persons->search($object->pid);
+															if (is_null($persons->card))
+															{
+																$data['persons'][$object->pid] = $persons;
+																$data['memberships'][$object->pid] = $object;
+															}
+														}
+													}
+												}
+												break;
 											case 'M/EXPIRED/LAST':
 												break;
 											case 'M/EXPIRED/THIS':
 												break;
 											case 'M/B/LAST':
+												if (date('G') >= 5)
+												{
+													$birthmonth = date('n', strtotime('-1 month', strtotime('today')));
+												}
+												else
+												{
+													$birthmonth = date('n', strtotime('-1 month', strtotime('yesterday')));
+												}
+												$memberships = $this->Memberships->filter();
+												if ( ! is_null($memberships))
+												{
+													foreach ($memberships as $object)
+													{
+														if ( ! isset($data['persons'][$object->pid]))
+														{
+															$persons = $this->Persons->search($object->pid);
+															switch ($persons->birthmonth)
+															{
+																case $birthmonth:
+																	$data['persons'][$object->pid] = $persons;
+																	$data['memberships'][$object->pid] = $object;
+																	break;
+															}
+														}
+													}
+												}
 												break;
 											case 'M/B/THIS':
+												if (date('G') >= 5)
+												{
+													$birthmonth = date('n', strtotime('today'));
+												}
+												else
+												{
+													$birthmonth = date('n', strtotime('yesterday'));
+												}
+												$memberships = $this->Memberships->filter();
+												if ( ! is_null($memberships))
+												{
+													foreach ($memberships as $object)
+													{
+														if ( ! isset($data['persons'][$object->pid]))
+														{
+															$persons = $this->Persons->search($object->pid);
+															switch ($persons->birthmonth)
+															{
+																case $birthmonth:
+																	$data['persons'][$object->pid] = $persons;
+																	$data['memberships'][$object->pid] = $object;
+																	break;
+															}
+														}
+													}
+												}
 												break;
 											case 'M/B/NEXT':
+												if (date('G') >= 5)
+												{
+													$birthmonth = date('n', strtotime('+1 month', strtotime('today')));
+												}
+												else
+												{
+													$birthmonth = date('n', strtotime('+1 month', strtotime('yesterday')));
+												}
+												$memberships = $this->Memberships->filter();
+												if ( ! is_null($memberships))
+												{
+													foreach ($memberships as $object)
+													{
+														if ( ! isset($data['persons'][$object->pid]))
+														{
+															$persons = $this->Persons->search($object->pid);
+															switch ($persons->birthmonth)
+															{
+																case $birthmonth:
+																	$data['persons'][$object->pid] = $persons;
+																	$data['memberships'][$object->pid] = $object;
+																	break;
+															}
+														}
+													}
+												}
 												break;
 											case 'C/ACTIVE':
 												$copartnerships = $this->Copartnerships->filter();
@@ -116,11 +212,95 @@ class Integrations extends CI_Controller
 													}
 												}
 												break;
+											case 'C/NEW':
+												$copartnerships = $this->Copartnerships->filter();
+												if ( ! is_null($copartnerships))
+												{
+													foreach ($copartnerships as $object)
+													{
+														$persons = $this->Persons->search($object->pid);
+														if (is_null($persons->card))
+														{
+															$data['persons'][$object->pid] = $persons;
+															$data['copartnerships'][$object->pid] = $object;
+														}
+													}
+												}
+												break;
 											case 'C/B/LAST':
+												if (date('G') >= 5)
+												{
+													$birthmonth = date('n', strtotime('-1 month', strtotime('today')));
+												}
+												else
+												{
+													$birthmonth = date('n', strtotime('-1 month', strtotime('yesterday')));
+												}
+												$copartnerships = $this->Copartnerships->filter();
+												if ( ! is_null($copartnerships))
+												{
+													foreach ($copartnerships as $object)
+													{
+														$persons = $this->Persons->search($object->pid);
+														switch ($persons->birthmonth)
+														{
+															case $birthmonth:
+																$data['persons'][$object->pid] = $persons;
+																$data['copartnerships'][$object->pid] = $object;
+																break;
+														}
+													}
+												}
 												break;
 											case 'C/B/THIS':
+												if (date('G') >= 5)
+												{
+													$birthmonth = date('n', strtotime('today'));
+												}
+												else
+												{
+													$birthmonth = date('n', strtotime('yesterday'));
+												}
+												$copartnerships = $this->Copartnerships->filter();
+												if ( ! is_null($copartnerships))
+												{
+													foreach ($copartnerships as $object)
+													{
+														$persons = $this->Persons->search($object->pid);
+														switch ($persons->birthmonth)
+														{
+															case $birthmonth:
+																$data['persons'][$object->pid] = $persons;
+																$data['copartnerships'][$object->pid] = $object;
+																break;
+														}
+													}
+												}
 												break;
 											case 'C/B/NEXT':
+												if (date('G') >= 5)
+												{
+													$birthmonth = date('n', strtotime('+1 month', strtotime('today')));
+												}
+												else
+												{
+													$birthmonth = date('n', strtotime('+1 month', strtotime('yesterday')));
+												}
+												$copartnerships = $this->Copartnerships->filter();
+												if ( ! is_null($copartnerships))
+												{
+													foreach ($copartnerships as $object)
+													{
+														$persons = $this->Persons->search($object->pid);
+														switch ($persons->birthmonth)
+														{
+															case $birthmonth:
+																$data['persons'][$object->pid] = $persons;
+																$data['copartnerships'][$object->pid] = $object;
+																break;
+														}
+													}
+												}
 												break;
 											default:
 												$data['error'] = 'No such type.';

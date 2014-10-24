@@ -53,7 +53,7 @@ endif;
 			</div>
 			<div class="grid_12">
 <?php
-if ( ! is_null($this->input->post('date')) && isset($designations)):
+if ( ! is_null($this->input->post('date'))):
 ?>
 				<h3><?php echo date('m/d/Y', strtotime($this->input->post('date'))); ?></h3>
 <?php

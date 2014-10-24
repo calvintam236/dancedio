@@ -57,7 +57,6 @@ class Relationships extends CI_Controller
 
 	function index()
 	{
-		$this->output->enable_profiler(TRUE);
 		// Get user permission
 		$data['users'] = $this->Users->status($this->session->userdata('name'));
 		switch ($data['users']->permission)
@@ -476,7 +475,7 @@ class Relationships extends CI_Controller
 									switch ($this->input->post('action'))
 									{
 										case 'edit/cancel':
-											if ( ! empty($this->input->post('jid')))
+											if ( ! is_null($this->input->post('jid')) && count($this->input->post('jid')) > 0)
 											{
 												foreach ($this->input->post('jid') as $object)
 												{
@@ -598,7 +597,7 @@ class Relationships extends CI_Controller
 						}
 					}
 				}
-				elseif ( ! empty($this->input->post()))
+				elseif (count($this->input->post()) > 0)
 				{
 					$data['error'] = 'No data received as expected.';
 				}

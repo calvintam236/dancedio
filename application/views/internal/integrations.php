@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<select name="type" required>
 					<option value="" selected disabled>TYPE</option>
 <?php
-$data = array('M/ACTIVE' => 'MEMBERS - ACTIVE', 'M/EXPIRED/LAST' => 'MEMBERS - EXPIRED LAST MONTH', 'M/EXPIRED/THIS' => 'MEMBERS - EXPIRED THIS MONTH', 'M/B/LAST' => 'MEMBERS - BIRTH LAST MONTH', 'M/B/THIS' => 'MEMBERS - BIRTH THIS MONTH', 'M/B/NEXT' => 'MEMBERS - BIRTH NEXT MONTH', 'C/ACTIVE' => 'COPARTNERS - ACTIVE', 'C/B/LAST' => 'COPARTNERS - BIRTH LAST MONTH', 'C/B/THIS' => 'COPARTNERS - BIRTH THIS MONTH', 'C/B/NEXT' => 'COPARTNERS - BIRTH NEXT MONTH');
+$data = array('M/ACTIVE' => 'MEMBERS - ACTIVE', 'M/NEW' => 'MEMBERS - NEWLY JOINED', 'M/EXPIRED/LAST' => 'MEMBERS - EXPIRED LAST MONTH', 'M/EXPIRED/THIS' => 'MEMBERS - EXPIRED THIS MONTH', 'M/B/LAST' => 'MEMBERS - BIRTH LAST MONTH', 'M/B/THIS' => 'MEMBERS - BIRTH THIS MONTH', 'M/B/NEXT' => 'MEMBERS - BIRTH NEXT MONTH', 'C/ACTIVE' => 'COPARTNERS - ACTIVE', 'C/NEW' => 'COPARTNERS - NEWLY JOINED', 'C/B/LAST' => 'COPARTNERS - BIRTH LAST MONTH', 'C/B/THIS' => 'COPARTNERS - BIRTH THIS MONTH', 'C/B/NEXT' => 'COPARTNERS - BIRTH NEXT MONTH');
 foreach ($data as $object => $item):
 ?>
 					<option value="<?php echo $object; ?>"><?php echo $item; ?></option>
@@ -69,6 +69,8 @@ if (isset($persons)):
 	$count = 0;
 	$data[$count] = array('pid', 'firstname', 'lastname', 'address', 'city', 'state', 'zipcode', 'email', 'cellphone', 'homephone', 'emergencyphone', 'birthmonth');
 	if (isset($memberships) || isset($copartnerships)):
+		if (isset($memberships)):
+			$data[$count][] = 'type';
 		$data[$count][] = 'since';
 		$data[$count][] = 'expiration';
 	endif;
@@ -90,6 +92,7 @@ if (isset($persons)):
 				$object->birthmonth
 			);
 			if (isset($memberships[$object->pid])):
+				$data[$count + 1][] = $memberships[$object->pid]->type;
 				$data[$count + 1][] = date('Y-m-d', $memberships[$object->pid]->since);
 				$data[$count + 1][] = date('Y-m-d', $memberships[$object->pid]->expiration);
 			endif;
