@@ -922,7 +922,12 @@ abstract class CI_DB_driver {
 		do
 		{
 			$c--;
-			$sql = substr_replace($sql, $this->escape($binds[$c]), $matches[0][$c][1], $ml);
+			$escaped_value = $this->escape($binds[$c]);
+			if (is_array($escaped_value))
+			{
+				$escaped_value = '('.implode(',', $escaped_value).')';
+			}
+			$sql = substr_replace($sql, $escaped_value, $matches[0][$c][1], $ml);
 		}
 		while ($c !== 0);
 
@@ -992,7 +997,12 @@ abstract class CI_DB_driver {
 	 */
 	public function escape($str)
 	{
-		if (is_string($str) OR (is_object($str) && method_exists($str, '__toString')))
+		if (is_array($str))
+		{
+			$str = array_map(array(&$this, 'escape'), $str);
+			return $str;
+		}
+		elseif (is_string($str) OR (is_object($str) && method_exists($str, '__toString')))
 		{
 			return "'".$this->escape_str($str)."'";
 		}
@@ -1440,7 +1450,7 @@ abstract class CI_DB_driver {
 	 */
 	protected function _has_operator($str)
 	{
-		return (bool) preg_match('/(<|>|!|=|\sIS NULL|\sIS NOT NULL|\sEXISTS|\sBETWEEN|\sLIKE|\sIN\s*\(|\s)/i', trim($str));
+		return (bool) preg_match('/(<|>|!|=|\sIS\s|\sEXISTS|\sBETWEEN|\sLIKE|\sIN\s*\(|\s)/i', trim($str));
 	}
 
 	// --------------------------------------------------------------------
@@ -1464,8 +1474,7 @@ abstract class CI_DB_driver {
 				'\s*(?:<|>|!)?=\s*',		// =, <=, >=, !=
 				'\s*<>?\s*',			// <, <>
 				'\s*>\s*',			// >
-				'\s+IS NULL',			// IS NULL
-				'\s+IS NOT NULL',		// IS NOT NULL
+				'\s+IS(?:\sNOT)?(?:\sNULL)?',	// IS[ NOT] NULL
 				'\s+EXISTS\s*\([^\)]+\)',	// EXISTS(sql)
 				'\s+NOT EXISTS\s*\([^\)]+\)',	// NOT EXISTS(sql)
 				'\s+BETWEEN\s+\S+\s+AND\s+\S+',	// BETWEEN value AND value
