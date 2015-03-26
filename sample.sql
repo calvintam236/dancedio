@@ -422,19 +422,3 @@ CREATE TABLE IF NOT EXISTS `values` (
   `user_query` mediumtext NOT NULL,
   PRIMARY KEY (`log_id`)
 ) ENGINE=ARCHIVE DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;*/
-
--- --------------------------------------------------------
-
---
--- Table structure for table `_sessions`
---
-
-CREATE TABLE IF NOT EXISTS `_sessions` (
-  `session_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `ip_address` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `user_agent` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
-  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_data` mediumtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`session_id`),
-  KEY `last_activity` (`last_activity`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
