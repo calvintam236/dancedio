@@ -2,26 +2,37 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 5.2.4 or newer
+ * An open source application development framework for PHP
  *
- * NOTICE OF LICENSE
+ * This content is released under the MIT License (MIT)
  *
- * Licensed under the Open Software License version 3.0
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
  *
- * This source file is subject to the Open Software License (OSL 3.0) that is
- * bundled with this package in the files license.txt / license.rst.  It is
- * also available through the world wide web at this URL:
- * http://opensource.org/licenses/OSL-3.0
- * If you did not receive a copy of the license and are unable to obtain it
- * through the world wide web, please send an email to
- * licensing@ellislab.com so we can send you a copy immediately.
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
  *
- * @package		CodeIgniter
- * @author		EllisLab Dev Team
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @license		http://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
- * @link		http://codeigniter.com
- * @since		Version 1.0
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+ * @since	Version 1.0.0
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -43,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if ( ! function_exists('is_php'))
 {
 	/**
-	 * Determines if the current version of PHP is greater then the supplied value
+	 * Determines if the current version of PHP is equal to or greater than the supplied value
 	 *
 	 * @param	string
 	 * @return	bool	TRUE if the current version is $version or higher
@@ -75,7 +86,7 @@ if ( ! function_exists('is_really_writable'))
 	 *
 	 * @link	https://bugs.php.net/bug.php?id=54709
 	 * @param	string
-	 * @return	void
+	 * @return	bool
 	 */
 	function is_really_writable($file)
 	{
@@ -481,59 +492,63 @@ if ( ! function_exists('set_status_header'))
 	 */
 	function set_status_header($code = 200, $text = '')
 	{
-		$stati = array(
-			200	=> 'OK',
-			201	=> 'Created',
-			202	=> 'Accepted',
-			203	=> 'Non-Authoritative Information',
-			204	=> 'No Content',
-			205	=> 'Reset Content',
-			206	=> 'Partial Content',
-
-			300	=> 'Multiple Choices',
-			301	=> 'Moved Permanently',
-			302	=> 'Found',
-			303	=> 'See Other',
-			304	=> 'Not Modified',
-			305	=> 'Use Proxy',
-			307	=> 'Temporary Redirect',
-
-			400	=> 'Bad Request',
-			401	=> 'Unauthorized',
-			403	=> 'Forbidden',
-			404	=> 'Not Found',
-			405	=> 'Method Not Allowed',
-			406	=> 'Not Acceptable',
-			407	=> 'Proxy Authentication Required',
-			408	=> 'Request Timeout',
-			409	=> 'Conflict',
-			410	=> 'Gone',
-			411	=> 'Length Required',
-			412	=> 'Precondition Failed',
-			413	=> 'Request Entity Too Large',
-			414	=> 'Request-URI Too Long',
-			415	=> 'Unsupported Media Type',
-			416	=> 'Requested Range Not Satisfiable',
-			417	=> 'Expectation Failed',
-			422	=> 'Unprocessable Entity',
-
-			500	=> 'Internal Server Error',
-			501	=> 'Not Implemented',
-			502	=> 'Bad Gateway',
-			503	=> 'Service Unavailable',
-			504	=> 'Gateway Timeout',
-			505	=> 'HTTP Version Not Supported'
-		);
+		if (is_cli())
+		{
+			return;
+		}
 
 		if (empty($code) OR ! is_numeric($code))
 		{
 			show_error('Status codes must be numeric', 500);
 		}
 
-		is_int($code) OR $code = (int) $code;
-
 		if (empty($text))
 		{
+			is_int($code) OR $code = (int) $code;
+			$stati = array(
+				200	=> 'OK',
+				201	=> 'Created',
+				202	=> 'Accepted',
+				203	=> 'Non-Authoritative Information',
+				204	=> 'No Content',
+				205	=> 'Reset Content',
+				206	=> 'Partial Content',
+
+				300	=> 'Multiple Choices',
+				301	=> 'Moved Permanently',
+				302	=> 'Found',
+				303	=> 'See Other',
+				304	=> 'Not Modified',
+				305	=> 'Use Proxy',
+				307	=> 'Temporary Redirect',
+
+				400	=> 'Bad Request',
+				401	=> 'Unauthorized',
+				403	=> 'Forbidden',
+				404	=> 'Not Found',
+				405	=> 'Method Not Allowed',
+				406	=> 'Not Acceptable',
+				407	=> 'Proxy Authentication Required',
+				408	=> 'Request Timeout',
+				409	=> 'Conflict',
+				410	=> 'Gone',
+				411	=> 'Length Required',
+				412	=> 'Precondition Failed',
+				413	=> 'Request Entity Too Large',
+				414	=> 'Request-URI Too Long',
+				415	=> 'Unsupported Media Type',
+				416	=> 'Requested Range Not Satisfiable',
+				417	=> 'Expectation Failed',
+				422	=> 'Unprocessable Entity',
+
+				500	=> 'Internal Server Error',
+				501	=> 'Not Implemented',
+				502	=> 'Bad Gateway',
+				503	=> 'Service Unavailable',
+				504	=> 'Gateway Timeout',
+				505	=> 'HTTP Version Not Supported'
+			);
+
 			if (isset($stati[$code]))
 			{
 				$text = $stati[$code];
@@ -544,32 +559,31 @@ if ( ! function_exists('set_status_header'))
 			}
 		}
 
-		$server_protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : FALSE;
-
 		if (strpos(PHP_SAPI, 'cgi') === 0)
 		{
 			header('Status: '.$code.' '.$text, TRUE);
 		}
 		else
 		{
-			header(($server_protocol ? $server_protocol : 'HTTP/1.1').' '.$code.' '.$text, TRUE, $code);
+			$server_protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.1';
+			header($server_protocol.' '.$code.' '.$text, TRUE, $code);
 		}
 	}
 }
 
 // --------------------------------------------------------------------
 
-if ( ! function_exists('_exception_handler'))
+if ( ! function_exists('_error_handler'))
 {
 	/**
-	 * Exception Handler
+	 * Error Handler
 	 *
-	 * This is the custom exception handler that is declared at the top
-	 * of CodeIgniter.php. The main reason we use this is to permit
+	 * This is the custom error handler that is declared at the (relative)
+	 * top of CodeIgniter.php. The main reason we use this is to permit
 	 * PHP errors to be logged in our own log files since the user may
-	 * not have access to server logs. Since this function
-	 * effectively intercepts PHP errors, however, we also need
-	 * to display errors based on the current error_reporting level.
+	 * not have access to server logs. Since this function effectively
+	 * intercepts PHP errors, however, we also need to display errors
+	 * based on the current error_reporting level.
 	 * We do that with the use of a PHP error template.
 	 *
 	 * @param	int	$severity
@@ -578,7 +592,7 @@ if ( ! function_exists('_exception_handler'))
 	 * @param	int	$line
 	 * @return	void
 	 */
-	function _exception_handler($severity, $message, $filepath, $line)
+	function _error_handler($severity, $message, $filepath, $line)
 	{
 		$is_error = (((E_ERROR | E_COMPILE_ERROR | E_CORE_ERROR | E_USER_ERROR) & $severity) === $severity);
 
@@ -604,7 +618,7 @@ if ( ! function_exists('_exception_handler'))
 		$_error->log_exception($severity, $message, $filepath, $line);
 
 		// Should we display the error?
-		if (ini_get('display_errors'))
+		if (str_ireplace(array('off', 'none', 'no', 'false', 'null'), '', ini_get('display_errors')))
 		{
 			$_error->show_php_error($severity, $message, $filepath, $line);
 		}
@@ -616,6 +630,35 @@ if ( ! function_exists('_exception_handler'))
 		{
 			exit(1); // EXIT_ERROR
 		}
+	}
+}
+
+// ------------------------------------------------------------------------
+
+if ( ! function_exists('_exception_handler'))
+{
+	/**
+	 * Exception Handler
+	 *
+	 * Sends uncaught exceptions to the logger and displays them
+	 * only if display_errors is On so that they don't show up in
+	 * production environments.
+	 *
+	 * @param	Exception	$exception
+	 * @return	void
+	 */
+	function _exception_handler($exception)
+	{
+		$_error =& load_class('Exceptions', 'core');
+		$_error->log_exception('error', 'Exception: '.$exception->getMessage(), $exception->getFile(), $exception->getLine());
+
+		// Should we display the error?
+		if (str_ireplace(array('off', 'none', 'no', 'false', 'null'), '', ini_get('display_errors')))
+		{
+			$_error->show_exception($exception);
+		}
+
+		exit(1); // EXIT_ERROR
 	}
 }
 
@@ -642,7 +685,7 @@ if ( ! function_exists('_shutdown_handler'))
 		if (isset($last_error) &&
 			($last_error['type'] & (E_ERROR | E_PARSE | E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_COMPILE_WARNING)))
 		{
-			_exception_handler($last_error['type'], $last_error['message'], $last_error['file'], $last_error['line']);
+			_error_handler($last_error['type'], $last_error['message'], $last_error['file'], $last_error['line']);
 		}
 	}
 }
@@ -802,6 +845,3 @@ if ( ! function_exists('function_usable'))
 		return FALSE;
 	}
 }
-
-/* End of file Common.php */
-/* Location: ./system/core/Common.php */
