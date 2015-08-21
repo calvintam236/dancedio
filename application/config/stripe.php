@@ -9,7 +9,3 @@ $config['stripe_test_mode']               = (ENVIRONMENT == 'production') ? FALS
 $config['stripe_verify_ssl']              = TRUE;
 $config['stripe_currency']                = 'usd';
 $config['stripe_decode']                  = TRUE;
-
-
-/* End of file stripe.php */
-/* Location: ./application/config/stripe.php */

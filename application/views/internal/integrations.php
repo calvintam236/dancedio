@@ -46,6 +46,7 @@ if (isset($persons)):
 	if (isset($memberships) || isset($copartnerships)):
 		if (isset($memberships)):
 			$data[$count][] = 'type';
+		endif;
 		$data[$count][] = 'since';
 		$data[$count][] = 'expiration';
 	endif;
